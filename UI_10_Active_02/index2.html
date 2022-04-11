@@ -1,0 +1,157 @@
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>나의 홈페이지</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      div.menu-box {
+        position: relative;
+        display: inline-block;
+        /*
+        가로방향 drop-menu 여러개 배치될때
+        drop submenu가 없는 box 도 항상 상단에 있도록 하는 속성
+        */
+        vertical-align: top;
+      }
+      div.top-menu {
+        width: 100px;
+        margin-left: 20px;
+        cursor: pointer;
+        background-color: blue;
+        color: aliceblue;
+        padding: 12px 16px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        text-align: center;
+      }
+      div.top-menu:hover {
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
+      }
+      /*
+      display : none = tag 자체가 화면에서 아얘 사라져 없는  tag가 된다
+    display : block =tag  를 다시 나타나게
+    display 속성에는 에니메이션 관련 소것ㅇ이 적용 많이 불편하다
+    transition 속성은 아예 작동하지 않는다
+
+    visibility : hidden 에서 visibility:visible 로 변하는 속성을 부여하면
+    transition  이 어느정도 적용된다
+
+    opacity: 0완전히 투명한 상태 ~ 1 : 완전히 보이는 상태
+      */
+      ul.drop-menu {
+        min-height: 0;
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-2rem);
+        z-index: inherit;
+
+        /*display: none;*/
+        /*
+        drop sub menu 폭에 관계없이 top menu 의 width우지
+        이 속성이 적용될려면 바깥쪽 box 의 position:ralative 로 설정
+        */
+        position: absolute;
+        /* 
+        최소폭 유질
+        sub menu 가 접히는 (wrap) 현상을 방지하기 위하여
+        sub menu의 width 가 가장 큰 요소의 값으로 설정한다
+        */
+        margin-left: 20px;
+        list-style: none;
+        min-width: 200px;
+        transition: 1s;
+      }
+      ul.drop-menu li {
+        padding: 12px 16px;
+        cursor: pointer;
+      }
+      ul.drop-menu li:hover {
+        background-color: #ddd;
+      }
+      /*
+      div,menu-box 에 hover 가 되면
+      실제로는  ul.drop-menu에 style 이 적용된어
+      display:block  이 되고 drop menu 가 나타난다
+      */
+      div.menu-box:hover ul.drop-menu {
+        height: 200px;
+        visibility: visible;
+        transform: translateY(0);
+        opacity: 1;
+        /*display: block;*/
+      }
+    </style>
+  </head>
+  <body>
+    <h1>반갑습니다</h1>
+    <!-- 첫번째 메뉴-->
+    <div class="menu-box">
+      <div class="top-menu">짜장면</div>
+      <ul class="drop-menu">
+        <li>보통</li>
+        <li>간짜장</li>
+        <li>쟁반짜장</li>
+      </ul>
+    </div>
+    <!-- 두번째 메뉴-->
+    <div class="menu-box">
+      <div class="top-menu">짬뽕</div>
+      <ul class="drop-menu">
+        <li>보통</li>
+        <li>해물짬뽕</li>
+        <li>짬짜면</li>
+      </ul>
+    </div>
+    <div class="menu-box">
+      <div class="top-menu">검색</div>
+      <ul class="drop-menu">
+        <li>구글</li>
+        <li>네이버</li>
+        <li>다음</li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    //.drop-menu  클래스 아래의 li tag 들을 모아서
+    // menuList 에 저장
+    //menuList 에는 현재 문서에서 조건에 맞는 li tag를 모두 가져와서
+    // menuList 를 배열로 만들어 준다
+    const menuList = document.querySelectorAll(".drop-menu li");
+
+    // let 키워드는 값이 변동되는 변수를 선언한다
+    for (let i = 0; i < menuList.length; i++) {
+      /*
+        li tag 는 여러개 가 존재 하므로 아래와 같이 각각의 요소에
+        event havdler를 추가해야 한다
+        li tag 개수만큼 코드를 반복하여 작성해야 하고
+        li tag 의 개수가 몇개인지 항상 알아야 하낟
+        상당히 불현한 코드가 된다
+        eventListerner 설정, event Handler 설정
+        li tag를 클릭하면 li tag 의 text( innerText 속성값)를
+        text 변수에 담고
+        alert 창으로 보여라
+        */
+      menuList[i].addEventListener("click", () => {
+        const text = menuList[i].innerText;
+        alert(text);
+
+        if (text === "구글") {
+          document.location.href = "https://google.com";
+        } else if (text === "네이버") {
+          document.location.href = "https://naver.com";
+        } else if (text === "다음") {
+          document.location.href = "https://daum.net";
+        } else if (text === "간짜장") {
+          confirm("간짜장 시킨신 분");
+        }
+      });
+    }
+  </script>
+</html>

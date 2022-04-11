@@ -1,0 +1,84 @@
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>나의 홈페이지</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+          width: 100vw;
+          height: 100vh;
+          display: flex;
+      }
+      nav {
+          flex: 1;
+          vertical-align: top;
+          border:  1px solid firebrick;
+          padding: 10px;
+      }
+      section {
+          flex: 6;
+          padding: 10px;
+          border: 1px solid rosybrown;
+      }
+      nav ul {
+          list-style: none;
+      }
+      nav li {
+          border-bottom: 1px solid cadetblue;
+          padding: 10px;
+          /*
+          box-shadow offset-x offset-y blur 색상
+          inset 은 그림자를 box 안쪽으로 들어가게
+          */
+          transition: 0.5s;
+          box-shadow: inset 0 0 0 tomato;
+      }
+      nav li:hover {
+          box-shadow: inset  200px 0 0 tomato;
+
+          cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li>home</li>
+        <li>회사 소개</li>
+        <li>공지사항</li>
+        <li>자유 게시판</li>
+      </ul>
+    </nav>
+    <section>
+      <article>
+        국회의원은 법률이 정하는 직을 겸할 수 없다. 
+        사회적 특수계급의 제도는 인정되지 아니하며, 
+        어떠한 형태로도 이를 창설할 수 없다. 
+        제1항의 지시를 받은 당해 행정기관은 이에 응하여야 한다.
+        언론·출판에 대한 허가나 검열과 집회·결사에 대한 
+        허가는 인정되지 아니한다. 대통령은 필요하다고 인정할 때에는 
+        외교·국방·통일 기타 국가안위에 관한 중요정책을 국민투표에 붙일 수 있다.
+      </article>
+      <article>
+        대한민국의 경제질서는 개인과 기업의 경제상의 자유와 창의를 
+        존중함을 기본으로 한다. 대통령은 국가의 안위에 관계되는 중대한 
+        교전상태에 있어서 국가를 보위하기 위하여 긴급한 조치가 필요하고 
+        국회의 집회가 불가능한 때에 한하여 법률의 효력을 가지는 명령을 
+        발할 수 있다. 국가는 지역간의 균형있는 발전을 위하여 지역경제를 
+        육성할 의무를 진다
+      <article>
+        통신·방송의 시설기준과 신문의 기능을 보장하기 위하여 필요한 사항은 
+        법률로 정한다. 대통령이 궐위된 때 또는 대통령 당선자가 사망하거나 
+        판결 기타의 사유로 그 자격을 상실한 때에는 60일 이내에 후임자를 
+        선거한다. 모든 국민은 자기의 행위가 아닌 친족의 행위로 인하여 
+        불이익한 처우를 받지 아니한다.
+      </article>
+    </section>
+  </body>
+</html>
